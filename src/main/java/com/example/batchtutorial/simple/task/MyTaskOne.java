@@ -1,4 +1,4 @@
-package com.example.batchtutorial.task;
+package com.example.batchtutorial.simple.task;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.StepContribution;

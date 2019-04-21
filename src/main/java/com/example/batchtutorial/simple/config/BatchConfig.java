@@ -1,14 +1,8 @@
-package com.example.batchtutorial.config;
+package com.example.batchtutorial.simple.config;
 
-import com.example.batchtutorial.listener.*;
-import com.example.batchtutorial.listener.JobResultListener;
-import com.example.batchtutorial.listener.StepItemProcessListener;
-import com.example.batchtutorial.listener.StepItemReadListener;
-import com.example.batchtutorial.listener.StepItemWriteListener;
-import com.example.batchtutorial.listener.StepResultListener;
-import com.example.batchtutorial.listener.StepSkipListener;
-import com.example.batchtutorial.task.MyTaskOne;
-import com.example.batchtutorial.task.MyTaskTwo;
+import com.example.batchtutorial.simple.listener.*;
+import com.example.batchtutorial.simple.task.MyTaskOne;
+import com.example.batchtutorial.simple.task.MyTaskTwo;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
