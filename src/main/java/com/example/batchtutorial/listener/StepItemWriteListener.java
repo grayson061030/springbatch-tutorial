@@ -1,4 +1,4 @@
-package com.example.batchtutorial.simple.listener;
+package com.example.batchtutorial.listener;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.ItemWriteListener;
