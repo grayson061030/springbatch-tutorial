@@ -1,0 +1,12 @@
+#scheduler name will be "MyScheduler"
+org:
+  quartz:
+    scheduler:
+      instanceName: MyScheduler
+    #maximum of 3 jobs can be run simultaneously
+    threadPool:
+      threadCount: 3
+    #All of Quartz data is held in memory (rather than in a database).
+    jobStore:
+      class: org.quartz.simpl.RAMJobStore
+

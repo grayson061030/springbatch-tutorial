@@ -3,10 +3,14 @@ package com.example.batchtutorial.config;
 import com.example.batchtutorial.entity.Employee;
 import com.example.batchtutorial.listener.*;
 import com.example.batchtutorial.processor.ValidationProcessor;
+import com.example.batchtutorial.task.MyTaskForQuartzOne;
+import com.example.batchtutorial.task.MyTaskForQuartzTwo;
 import com.example.batchtutorial.task.MyTaskOne;
 import com.example.batchtutorial.task.MyTaskTwo;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
+import org.springframework.batch.core.StepContribution;
+import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -129,5 +133,34 @@ public class BatchConfig {
 				list.stream().forEach(System.out::println);
 			}
 		};
+	}
+	/*===========================Quartz Job================================*/
+	@Bean
+	public Step quartzStepOne(){
+		return stepBuilderFactory.get("quartzStepOne")
+			.tasklet(new MyTaskForQuartzOne())
+			.build();
+	}
+
+	@Bean
+	public Step quartzStepTwo(){
+		return stepBuilderFactory.get("quartzStepTwo")
+			.tasklet(new MyTaskForQuartzTwo())
+			.build();
+	}
+	@Bean(name="quartzJobOne")
+	public Job quartzJobOne(){
+		return jobBuilderFactory.get("quartzJobOne")
+			.start(quartzStepOne())
+			.next(quartzStepTwo())
+			.build();
+	}
+
+	@Bean(name="quartzJobTwo")
+	public Job quartzJobTwo(){
+		return jobBuilderFactory.get("quartzJobTwo")
+			.flow(quartzStepOne())
+			.build()
+			.build();
 	}
 }
