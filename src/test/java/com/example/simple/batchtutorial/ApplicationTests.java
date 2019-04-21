@@ -1,4 +1,4 @@
-package com.example.batchtutorial;
+package com.example.simple.batchtutorial;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
